@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        H1 {
+            /* margin: auto;
+            display: block;
+            width: 1000px;
+            font-size: 50px;
+            color: rgb(11, 47, 35);
+            font-family: Arial, Helvetica, sans-serif;
+            font-style: italic;
+            font-weight: 10000; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: rgb(11, 47, 35);
+            font-family: fantasy;
+            /* font-style: italic; */
+            font-weight: 10000;
+            margin: 0px;
+        }
+
+        #im {
+            width: 50px;
+            padding-right: 40px;
+        }
+        .navi {
+            background-color: rgb(15, 14, 14);
+
+        }
+
+        header {
+            position: sticky;
+            margin-bottom: 0px;
+        }
+
+        .navi ul {
+            overflow: auto;
+        }
+
+        .navi li {
+            float: left;
+            list-style: none;
+            margin: 8px;
+        }
+
+        .navi li a {
+            text-decoration: none;
+            color: azure;
+            padding-top: 4px;
+            padding-bottom: 4px;
+            padding-left: 4px;
+            padding-right: 8px;
+        }
+
+        ul {
+            padding-inline-start: 10px;
+        }
+
+        .navi li a:hover {
+            color: rgb(239, 239, 146);
+        }
+
+        .navi #searchicon {
+            width: 20px;
+            filter: invert(100%);
+            float: right;
+            margin-top: 6px;
+        }
+
+        .navi #search {
+            float: right;
+            width: 10%;
+            border: 2px solid rgb(235, 255, 212);
+            border-radius: 4px;
+            margin-right: 6px;
+            margin-top: 6px;
+
+        }
+
+        .icon {
+            width: 150px;
+            height: 150px;
+            padding: 4px 45px;
+            border-radius: 6px;
+        }
+
+        .box {
+            float: left;
+            text-align: center;
+        }
+
+        .menubox {
+            margin-bottom: 20px;
+        }
+
+        .rbox img {
+            float: left;
+            width: 100px;
+            height: 100px;
+            padding: 10px 10px;
+        }
+
+        .rbox {
+            float: left;
+            width: 44%;
+            border: 2px solid black;
+            border-radius: 6px;
+            margin: 40px;
+        }
+        .rbox .rif{
+            padding: 0px 8px;
+            margin-left: 8px;
+        }
+        h3{
+            margin: auto;
+        }
+        .rbox  a{
+            text-decoration: none;
+            text-align: center;
+            color: black;
+        }
+        .rbox a:hover{
+            color: rgb(48, 31, 9);
+        }
+    </style>
+</head>
+
+<body>
+    <h1><img id="im"
+        src="https://th.bing.com/th?q=Logo+for+AP&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=strict&t=1&mw=247"
+        alt="icon">APLENDIDEATS</h1>
+
+    <header>
+        <nav class="navi">
+            <ul>
+                {% if user.is_authenticated%}
+                <li class="nm"><a href="{% url 'profile' user.id%}">PROFILE</a></li>
+                <li class="nm"><a href="{% url 'home'%}">HOME</a></li>
+                <li class="nm"><a href="{% url 'cart'%}">Your CART🛒</a></li>
+                <li class="nm"><a href="{% url 'order'%}">Past Orders📋</a></li>
+                <li class="nm"><a href="{% url 'logout'%}">LOGOUT</a></li>
+                <li class="nm"><a href="{% url 'contact'%}">CONTACT US</a></li>
+                {%else%}
+                
+                <li class="nm"><a href="{% url 'register'%}">REGISTER</a></li>
+                <li class="nm"><a href="{% url 'login'%}">LOGIN</a></li>
+                {%endif%}0
+            </ul>
+        </nav>
+    </header>
+
+
+    <div class="menubox">
+        <div class="box" id="burger">
+            <p><a href="{% url 'category_detail' 1 %}">
+                        <img class="icon"
+                        src="https://i.pinimg.com/originals/14/6a/24/146a2477a671db2a2b0432cb517d690a.png"
+                        alt="burger"></a></p>
+            <p>Burger</p>
+        </div>
+        <div class="box" id="pizza">
+            <p><a href="{% url 'category_detail' 2 %}"><img class="icon"
+                        src="https://th.bing.com/th/id/OIP.8UeIFPMYwIErE1ShRYB9QAHaEo?pid=ImgDet&rs=1" alt="pizza"></a>
+            </p>
+            <p>Pizza</p>
+        </div>
+
+        <div class="box" id="chinese">
+            <p><a href="{% url 'category_detail' 3 %}"><img class="icon"
+                        src="https://th.bing.com/th/id/OIP.ApF_riFu-sMkBd8CEAvOcAHaFE?pid=ImgDet&rs=1"
+                        alt="Chinese"></a></p>
+            <p>Chinese</p>
+        </div>
+        <div class="box" id="biryani">
+            <p><a href="{% url 'category_detail' 4 %}"><img class="icon" src="https://cdn.siasat.com/wp-content/uploads/2020/02/Biryani-1.jpg"
+                        alt="Biryani"></a></p>
+            <p>Biryani</p>
+        </div>
+        <div class="box" id="drinks">
+            <p><a href="{% url 'category_detail' 5 %}"><img class="icon"
+                        src="https://th.bing.com/th/id/R.cf3bfb87156e8773a72d03b2f3febd5c?rik=VTgbkMtfQl7Qjg&riu=http%3a%2f%2fwww.onlyfoods.net%2fwp-content%2fuploads%2f2017%2f03%2fSpiced-Rum-Mixed-Drinks-Cocktails-Recipes.jpg&ehk=bUgo1VteqcgP%2fRHEh7%2fyi1FmtBjzMX2MbVLMYw0P5nw%3d&risl=&pid=ImgRaw&r=0"
+                        alt="Drinks"></a></p>
+            <p>Bevarages</p>
+        </div>
+        <div class="box" id="dessert">
+            <p><a href="{% url 'category_detail' 6 %}"><img class="icon"
+                        src="https://www.tasteofhome.com/wp-content/uploads/2018/01/exps33498_5SD153598B11_05_2b-1.jpg"
+                        alt="Desserts"></a></p>
+            <p>Desserts</p>
+        </div>
+    </div>
+
+    <!-- for restaurant boxxes -->
+    <div class="restbox">
+        <div class="rbox">
+            <a href="{% url 'restaurant_detail' 1 %}"><div class="rim">
+                <p><img src="https://th.bing.com/th/id/R.3b6761206dcf70fb3cfae1d760c21ac8?rik=AdBpa9n465vAhw&riu=http%3a%2f%2fcdn1.bostonmagazine.com%2fwp-content%2fuploads%2f2017%2f01%2findia-pavilion-fb.jpg&ehk=NV7RR0bX3aFnrDBYLpgcjG9y%2f4rDi8yes2b5eMz964Q%3d&risl=&pid=ImgRaw&r=0"
+                        alt=""></p>
+            </div>
+            <div class="rif">
+                <h3>Bindass Restaurant</h3>
+                <p>Varanasi | Near Hyderabad Gate</p>
+                <p>Rating 4 <span style="display: inline-block; font-size: 24px; color: #067a3e; background: #ffffff; border-radius: 6px; padding: 10px 20px;">★</span><span style="display: inline-block; font-size: 24px; color: #067a3e; background: #ffffff; border-radius: 6px; padding: 10px 20px;">★</span><span style="display: inline-block; font-size: 24px; color: #067a3e; background: #ffffff; border-radius: 6px; padding: 10px 20px;">★</span><span style="display: inline-block; font-size: 24px; color: #067a3e; background: #ffffff; border-radius: 6px; padding: 10px 20px;">★</span><span style="display: inline-block; font-size: 24px; color: #97a09d; background: #fefefe; border-radius: 6px; padding: 10px 20px;">★</span></p>
+            </div>
+        </div></a>
+        <div class="rbox">
+            <a href="{% url 'restaurant_detail' 2 %}"><div class="rim">
+                <p><img src="https://th.bing.com/th/id/OIP.JWkpqfhj19CZa8YhMbW6SQAAAA?pid=ImgDet&w=350&h=350&rs=1" alt=""></p>
+            </div>
+            <div class="rif">
+                <h3>Dhanyawad Restaurant</h3>
+                <p>Lanka | Near Ravidas Gate</p>
+                <p>Rating 4.5 <span style="display: inline-block; font-size: 24px; color: #067a3e; background: #ffffff; border-radius: 6px; padding: 10px 20px;">★</span><span style="display: inline-block; font-size: 24px; color: #067a3e; background: #ffffff; border-radius: 6px; padding: 10px 20px;">★</span><span style="display: inline-block; font-size: 24px; color: #067a3e; background: #ffffff; border-radius: 6px; padding: 10px 20px;">★</span><span style="display: inline-block; font-size: 24px; color: #067a3e; background: #ffffff; border-radius: 6px; padding: 10px 20px;">★</span><span style="display: inline-block; font-size: 24px; color: #7cad94; background: #ffffff; border-radius: 6px; padding: 10px 20px;">★</span></p>
+            </div>
+        </div></a>
+        <div class="rbox">
+            <a href="{% url 'restaurant_detail' 3 %}"><div class="rim">
+                <p><img src="https://th.bing.com/th/id/OIP.zRN-sBaQCimvGD7pnmTDrAHaE7?pid=ImgDet&rs=1" alt=""></p>
+            </div>
+            <div class="rif">
+                <h3>Sathkar Restaurant</h3>
+                <p>Varanasi | Near Lanka </p>
+                <p>Rating 5 <span style="display: inline-block; font-size: 24px; color: #067a3e; background: #ffffff; border-radius: 6px; padding: 10px 20px;">★</span><span style="display: inline-block; font-size: 24px; color: #067a3e; background: #ffffff; border-radius: 6px; padding: 10px 20px;">★</span><span style="display: inline-block; font-size: 24px; color: #067a3e; background: #ffffff; border-radius: 6px; padding: 10px 20px;">★</span><span style="display: inline-block; font-size: 24px; color: #067a3e; background: #ffffff; border-radius: 6px; padding: 10px 20px;">★</span><span style="display: inline-block; font-size: 24px; color: #067a3e; background: #ffffff; border-radius: 6px; padding: 10px 20px;">★</span></p>
+            </div>
+        </div></a>
+        <div class="rbox">
+            <a href="{% url 'restaurant_detail' 4 %}"><div class="rim">
+                <p><img src="https://th.bing.com/th/id/OIP.F48Ta-u-I74gaRY18l_8sAHaE8?pid=ImgDet&rs=1" alt=""></p>
+            </div>
+            <div class="rif">
+                <h3>Dining Bell Restaurant</h3>
+                <p>Varanasi | Near Hyderabad Gate</p>
+                <p>Rating 4 <span style="display: inline-block; font-size: 24px; color: #067a3e; background: #ffffff; border-radius: 6px; padding: 10px 20px;">★</span><span style="display: inline-block; font-size: 24px; color: #067a3e; background: #ffffff; border-radius: 6px; padding: 10px 20px;">★</span><span style="display: inline-block; font-size: 24px; color: #067a3e; background: #ffffff; border-radius: 6px; padding: 10px 20px;">★</span><span style="display: inline-block; font-size: 24px; color: #067a3e; background: #ffffff; border-radius: 6px; padding: 10px 20px;">★</span><span style="display: inline-block; font-size: 24px; color: #949a97; background: #ffffff; border-radius: 6px; padding: 10px 20px;">★</span></p>
+            </div>
+        </div></a>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+{% extends "customer/base.html"%}
+
+{% block content %}
+{%for carted_food_item in carted_food_items %}
+
+<div class="content-section" class="temp">
+  <div class="media">
+    <div class="media-body">
+
+
+      <h2 class="account-heading">{{carted_food_item.food_name}} </h2>
+      <h3> Price : {{carted_food_item.price}}</h3> 
+
+      <p class="text-secondary"> {{carted_food_items.restaurant_name}},quantity:{{carted_food_item.quantity}} </p>
+    </div>
+  </div>
+  <div>
+
+    <form method="post" action="{%url 'deleteitem' carted_food_item.id %}">
+      {% csrf_token %}
+      <!-- Your form fields here -->
+      <input type="hidden" name="button_action" value="bookmark">
+      <button type="submit" class="btn btn-outline-info" name="bookmark">Remove from cart</button>
+    </form>
+    <form method="post" action="{%url 'ordernow' carted_food_item.id %}">
+      {% csrf_token %}
+      <!-- Your form fields here -->
+      <input type="hidden" name="button_action" value="ordernow">
+      <button type="submit" class="btn btn-outline-info" name="ordernow">Order Now</button>
+    </form>
+
+  </div>
+</div>
+{%endfor%}
+<!-- FORM HERE -->
+
+
+
+{% endblock %}

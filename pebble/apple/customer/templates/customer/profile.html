@@ -1,0 +1,63 @@
+{% extends "customer/base.html" %}
+
+{% block content %}
+<div class="container ggg">
+    <div class="row  mt-5" >
+        <div class="col-lg-12">
+            <div class="ggg">
+                {% comment %} <div class="card-body"> {% endcomment %}
+                  <div class="profile-block my-block">
+                  <div class="profile-picture-container1">
+                    <img src="{{ user.user_profile.profile_pic.url }}" alt="Profile Picture" class="profile-picture2">
+                  </div>
+                
+                    {% comment %} <div class="text-center ">
+                        <img src="{{ user.user_profile.profile_pic.url }}"alt="{{ user.username }}'s Profile Picture" class="img-fluid rounded-circle profile-picture"> 
+                    </div> {% endcomment %}
+                        <div >
+                          <!-- Profile information goes here -->
+                          
+                        <h3 class="mt-5" style="margin-left: 20px;">{{ user.username }}</h3>
+                        <p style="margin-left: 30px;">{{ user.user_profile.email }}</p>
+                        
+                        <hr>
+                        <div style="display: inline-block;" class="full-screen-block" >
+                        {% comment %} <div style="display: block;" > {% endcomment %}
+                          <div class="basicDetails_basicDetailsContainer__1z2Dn " >
+                            <div class="basicDetails_basicDetailsContainerTitle__3qb0g">Personal Details</div>
+                            <div class="FieldStyle">
+                              <div class="field">
+                                <div class="ageField " style="box-sizing: border-box;" >
+                                  <div class="MuiButtonBase-root MuiListItem-root ListItem_root_2_4XU MuiListItem-gutters ListItem_gutters_2RbEP MuiListItem-button" tabindex="0" role="button" aria-disabled="false">
+                                    <div class="MuiListItemText-root ListItemText_root__3UXm7 MuiListItemText-multiline">
+                                    <!-- <span class="MuiTypography-root MuiListItemText-primary ListItemText_primary__1Jr44 MuiTypography-body1 MuiTypography-displayBlock">Age Range</span> -->
+                                    <p class="MuiTypography-root Typography_root_3w5N2 MuiTypography-body1 MuiTypography-noWrap Typography_noWrap_VRMGW">{{ personal_info1.age }}</p>
+                                  </div>
+                                </div>
+                                    <h5> <span><hr></span></h5>
+                        <h2 style="margin-left: 20px;">{{ user.user_profile.firstname }} {{ user.user_profile.lastname }}</h2>
+                        <p style="margin-left: 20px;"> <strong>Address : </strong>{{user.user_profile.address}}<br><strong>From : </strong>{{ user.user_profile.city }} ,{{ user.user_profile.state }}<br><strong>Mobile No. : </strong>{{user.user_profile.phonenumber}}
+                          
+                        
+
+                        <!-- Add more user details here -->
+                    </div>
+                  </div>   
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <div>
+      <hr>
+      
+      <button type="button" class="btn btn-outline-info"><a href="{%url 'updateprofile' user.id%}"> update your profile</a></button>
+       
+    </div>
+      {% endblock %}

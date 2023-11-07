@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>project</title>
+    <style>
+        
+        /* body {
+            background: url('/static/customer/background.jpg');
+
+        } */
+
+        .navi {
+            background-color: rgb(65, 30, 30);
+
+        }
+
+
+        .navi ul {
+            overflow: auto;
+        }
+
+        .navi li {
+            float: left;
+            list-style: none;
+            margin: 8px;
+        }
+
+        #im {
+            width: 100px;
+            padding-right: 40px;
+        }
+
+        .navi li a {
+            text-decoration: none;
+            color: azure;
+            padding-top: 4px;
+            padding-bottom: 4px;
+            padding-left: 4px;
+            padding-right: 8px;
+        }
+
+        ul {
+            padding-inline-start: 10px;
+        }
+
+
+        H1 {
+            /* margin: auto;
+            display: block;
+            width: 1000px;
+            font-size: 50px;
+            color: rgb(11, 47, 35);
+            font-family: Arial, Helvetica, sans-serif;
+            font-style: italic;
+            font-weight: 10000; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: rgb(11, 47, 35);
+            font-family: fantasy;
+            /* font-style: italic; */
+            font-weight: 10000;
+        }
+
+        .navi li a:hover {
+            color: rgb(239, 239, 146);
+        }
+        h2{
+            margin: auto;
+            display: block;
+            width: 300px;
+            color: rgb(11, 11, 76);
+            font-size: 40px;
+            text-shadow:0 0 2px 2px rgb(170, 170, 228) ;
+        }
+        .pic {
+            width: 80px;
+        }
+
+        .navigate li{
+            float: left;
+            list-style: none;
+            cursor: pointer;
+            margin: 8px 54px;
+        }
+        .navigate ul{
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1><img id="im"
+            src="https://th.bing.com/th?q=Logo+for+AP&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.5&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=strict&t=1&mw=247"
+            alt="icon">APLENDIDEATS</h1>
+    <header>
+        
+        <nav class="navi">
+            <ul>
+                {% if user.is_authenticated%}
+                <li class="nm"><a href="{% url 'profile' user.id%}">PROFILE</a></li>
+                <li class="nm"><a href="{% url 'home'%}">HOME</a></li>
+                <li class="nm"><a href="{% url 'cart'%}">Your CART🛒</a></li>
+                <li class="nm"><a href="{% url 'order'%}">Past Orders📋</a></li>
+                <li class="nm"><a href="{% url 'logout'%}">LOGOUT</a></li>
+                <li class="nm"><a href="{% url 'contact'%}">CONTACT US</a></li>
+                {%else%}
+                <li class="nm"><a href="{% url 'register'%}">REGISTER</a></li>
+                <li class="nm"><a href="{% url 'login'%}">LOGIN</a></li>
+                {%endif%}
+
+            </ul>
+        </nav>
+    </header>
+    
+    <h2><strong>CONTACT-US</strong></h1>
+    <div>
+        <nav class="navigate">
+            <ul>
+                <li class="inf">
+                    <a href="https://www.instagram.com/pragnitha_7/"><img class="pic"
+                            src="https://arturosoriapalaceboutiquehotel.files.wordpress.com/2019/02/instagram-icon.jpg"
+                            alt="INSTAGRAM"></a>
+                            
+                </li>
+                <li class="inf">
+                    <a href="https://www.facebook.com/"><img class="pic"
+                            src="https://th.bing.com/th?id=OIP.5Wm2l9foUpPcFI9dWplqdQHaG3&w=259&h=240&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2"
+                            alt="FACE BOOK"></a>
+                </li>
+                <li class="inf">
+                    <a href="https://www.twitter.com/"><img class="pic"
+                            src="https://th.bing.com/th?id=OIP.5i_qNz6UN0Id7o1dSNM89gAAAA&w=212&h=212&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2"
+                            alt="TWITTER"></a>
+                </li>
+                <li>
+                    <a href="tel:+919876543210" style="font-size: 60px; text-decoration: none; "><img src="https://th.bing.com/th?id=OIP.9cdcALC8fz5vN-rip2uB0AHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" alt="PHONE" class="pic"> : 9876543210</a>
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+    
+</body>
+
+</html>

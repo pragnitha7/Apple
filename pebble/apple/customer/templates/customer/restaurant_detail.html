@@ -1,0 +1,22 @@
+{% extends "customer/base.html" %}
+
+{% block content %}
+    <h1 class="rest">{{ restaurant_obj.restaurant_name }}</h1>
+
+    <!-- List of food items for this restaurant -->
+    {% for food_item in food_items %}
+    <div class="food-item">
+        <img src="{{ food_item.image.url }}" alt="{{ food_item.food_name }}">
+        <h2>{{ food_item.food_name }}</h2>
+        <p>{{ food_item.description }}</p>
+        <p>Price: ${{ food_item.price }}</p>
+        <form method="post" action="{% url 'add_to_cart' food_item.id %}">
+            {% csrf_token %}
+            <!-- Your form fields here -->
+        
+            <input type="hidden" name="button_action" value="{{food_item.id}}">
+            <button type="submit" class="btn btn-outline-info" name="addtocart">add to cart</button>
+          </form>
+    </div>
+    {% endfor %}
+{% endblock %}
